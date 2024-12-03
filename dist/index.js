@@ -66,7 +66,7 @@ class Project {
     createVersion(version) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield axios_1.default.post(`https://${this.domain}.atlassian.net/rest/api/3/version`, version, this._authHeaders());
+                const response = yield axios_1.default.post(`https://${this.domain}/rest/api/2/version`, version, this._authHeaders());
                 return response === null || response === void 0 ? void 0 : response.data;
             }
             catch (error) {
@@ -78,7 +78,7 @@ class Project {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 core.debug(JSON.stringify(version));
-                const response = yield axios_1.default.put(`https://${this.domain}.atlassian.net/rest/api/3/version/${version.id}`, version, this._authHeaders());
+                const response = yield axios_1.default.put(`https://${this.domain}/rest/api/2/version/${version.id}`, version, this._authHeaders());
                 return response === null || response === void 0 ? void 0 : response.data;
             }
             catch (error) {
@@ -90,7 +90,7 @@ class Project {
     updateIssue(ticket, version) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield axios_1.default.put(`https://${this.domain}.atlassian.net/rest/api/3/issue/${ticket}`, {
+                const response = yield axios_1.default.put(`https://${this.domain}/rest/api/2/issue/${ticket}`, {
                     update: {
                         fixVersions: [
                             {
@@ -115,7 +115,7 @@ class Project {
     _load() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield axios_1.default.get(`https://${this.domain}.atlassian.net/rest/api/3/project/${this.name}?properties=versions,key,id,name`, this._authHeaders());
+                const response = yield axios_1.default.get(`https://${this.domain}/rest/api/2/project/${this.name}?properties=versions,key,id,name`, this._authHeaders());
                 this.project = response === null || response === void 0 ? void 0 : response.data;
                 return this;
             }
