@@ -273,7 +273,7 @@ function run() {
                     const versionToCreate = {
                         name: env_1.RELEASE_NAME,
                         archived: false,
-                        released: true,
+                        released: false,
                         releaseDate: new Date().toISOString(),
                         projectId: Number((_c = project.project) === null || _c === void 0 ? void 0 : _c.id)
                     };
@@ -283,7 +283,7 @@ function run() {
             }
             else {
                 core.debug(`Version ${env_1.RELEASE_NAME} found and is going to be updated`);
-                const versionToUpdate = Object.assign(Object.assign({}, version), { self: undefined, released: true, releaseDate: new Date().toISOString(), userReleaseDate: undefined });
+                const versionToUpdate = Object.assign(Object.assign({}, version), { self: undefined, released: false, releaseDate: new Date().toISOString(), userReleaseDate: undefined });
                 version = yield project.updateVersion(versionToUpdate);
             }
             if (env_1.TICKETS !== '') {
