@@ -57,7 +57,7 @@ async function run(): Promise<void> {
           name: RELEASE_NAME,
           archived: false,
           released: false,
-          releaseDate: new Date().toISOString(),
+          startDate: new Date().toISOString(),
           projectId: Number(project.project?.id)
         }
         version = await project.createVersion(versionToCreate)
@@ -69,7 +69,7 @@ async function run(): Promise<void> {
         ...version,
         self: undefined,
         released: false,
-        releaseDate: new Date().toISOString(),
+        startDate: new Date().toISOString(),
         userReleaseDate: undefined
       }
       version = await project.updateVersion(versionToUpdate)

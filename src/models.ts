@@ -5,7 +5,7 @@ export type Version = {
   archived: boolean
   released: boolean
   startDate?: string
-  releaseDate?: string
+  startDate?: string
   userStartDate?: string
   userReleaseDate?: string
   projectId?: number
